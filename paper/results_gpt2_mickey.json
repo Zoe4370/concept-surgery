@@ -1,0 +1,265 @@
+{
+  "config": {
+    "concept_dataset": "mickey_mouse",
+    "neutral_dataset": "neutral",
+    "model_name": "gpt2",
+    "device": "auto",
+    "dtype": "float32",
+    "capture_positions": "last",
+    "token_source": "last",
+    "layers": null,
+    "methods": [
+      "mean_diff",
+      "leace",
+      "inlp"
+    ],
+    "n_inlp_directions": 4,
+    "n_pca_directions": 4,
+    "ablate_layers": null,
+    "ablate_mode": "project",
+    "pad_epsilon": 0.0,
+    "refit_iters": 2,
+    "eval_seeds": 5,
+    "max_gen_tokens": 60,
+    "locality_kl_tokens": 40,
+    "seed": 0,
+    "output_dir": "runs/mickey_v5"
+  },
+  "selection": [
+    {
+      "layer": 4,
+      "method": "mean_diff",
+      "post_probe_acc": 0.15,
+      "neutral_nll": 4.8627282648138666,
+      "score": 0.8658684735741126
+    },
+    {
+      "layer": 4,
+      "method": "leace",
+      "post_probe_acc": 0.15,
+      "neutral_nll": 4.862729765678364,
+      "score": 0.8658699744386101
+    },
+    {
+      "layer": 4,
+      "method": "inlp",
+      "post_probe_acc": 0.3,
+      "neutral_nll": 5.012297500026682,
+      "score": 0.8654377087869276
+    },
+    {
+      "layer": 5,
+      "method": "mean_diff",
+      "post_probe_acc": 0.225,
+      "neutral_nll": 4.586031220649761,
+      "score": 0.5141714294100069
+    },
+    {
+      "layer": 5,
+      "method": "leace",
+      "post_probe_acc": 0.225,
+      "neutral_nll": 4.58602946964118,
+      "score": 0.5141696784014261
+    },
+    {
+      "layer": 5,
+      "method": "inlp",
+      "post_probe_acc": 0.275,
+      "neutral_nll": 5.097400352603099,
+      "score": 0.9755405613633451
+    },
+    {
+      "layer": 6,
+      "method": "mean_diff",
+      "post_probe_acc": 0.175,
+      "neutral_nll": 5.170017013132898,
+      "score": 1.148157221893144
+    },
+    {
+      "layer": 6,
+      "method": "leace",
+      "post_probe_acc": 0.175,
+      "neutral_nll": 5.170018180471952,
+      "score": 1.1481583892321978
+    },
+    {
+      "layer": 6,
+      "method": "inlp",
+      "post_probe_acc": 0.275,
+      "neutral_nll": 5.036928687590719,
+      "score": 0.9150688963509651
+    },
+    {
+      "layer": 8,
+      "method": "mean_diff",
+      "post_probe_acc": 0.1875,
+      "neutral_nll": 5.003512689976093,
+      "score": 0.9691528987363389
+    },
+    {
+      "layer": 8,
+      "method": "leace",
+      "post_probe_acc": 0.1875,
+      "neutral_nll": 5.003513357026981,
+      "score": 0.9691535657872272
+    },
+    {
+      "layer": 8,
+      "method": "inlp",
+      "post_probe_acc": 0.275,
+      "neutral_nll": 5.13219289310643,
+      "score": 1.0103331018666757
+    },
+    {
+      "layer": 9,
+      "method": "mean_diff",
+      "post_probe_acc": 0.15,
+      "neutral_nll": 4.950432532472037,
+      "score": 0.9535727412322833
+    },
+    {
+      "layer": 9,
+      "method": "leace",
+      "post_probe_acc": 0.15,
+      "neutral_nll": 4.950431198370262,
+      "score": 0.9535714071305076
+    },
+    {
+      "layer": 9,
+      "method": "inlp",
+      "post_probe_acc": 0.3125,
+      "neutral_nll": 5.291170714331455,
+      "score": 1.1318109230917006
+    },
+    {
+      "layer": 10,
+      "method": "mean_diff",
+      "post_probe_acc": 0.2,
+      "neutral_nll": 4.889749412328167,
+      "score": 0.8428896210884134
+    },
+    {
+      "layer": 10,
+      "method": "leace",
+      "post_probe_acc": 0.2,
+      "neutral_nll": 4.889746994268699,
+      "score": 0.8428872030289452
+    },
+    {
+      "layer": 10,
+      "method": "inlp",
+      "post_probe_acc": 0.3375,
+      "neutral_nll": 5.131318556155012,
+      "score": 0.9469587649152581
+    }
+  ],
+  "chosen": {
+    "layer": 5,
+    "method": "leace",
+    "post_probe_acc": 0.225,
+    "neutral_nll": 4.58602946964118,
+    "score": 0.5141696784014261
+  },
+  "baseline": {
+    "probe_acc_layer4": 1.0,
+    "probe_acc_layer5": 0.9753333333333334,
+    "probe_acc_layer6": 0.909,
+    "probe_acc_layer8": 0.967,
+    "probe_acc_layer9": 0.9833333333333334,
+    "probe_acc_layer10": 0.9506666666666665,
+    "probe_acc": 0.9506666666666665,
+    "concept_nll": 4.406653144755548,
+    "neutral_nll": 4.293237962687326,
+    "loss_ratio": 0.9742627390124406
+  },
+  "ablated_single": {
+    "probe_acc_layer4": 1.0,
+    "probe_acc_layer5": 0.057666666666666665,
+    "probe_acc_layer6": 0.6693333333333333,
+    "probe_acc_layer8": 0.8753333333333334,
+    "probe_acc_layer9": 0.9253333333333332,
+    "probe_acc_layer10": 0.9423333333333334,
+    "probe_acc": 0.9423333333333334,
+    "concept_nll": 4.797704824710482,
+    "neutral_nll": 4.532984623678555,
+    "loss_ratio": 0.9448235748751173
+  },
+  "ablated_multi": {
+    "probe_acc_layer4": 0.03333333333333333,
+    "probe_acc_layer5": 0.6026666666666667,
+    "probe_acc_layer6": 0.7436666666666667,
+    "probe_acc_layer8": 0.8836666666666666,
+    "probe_acc_layer9": 0.95,
+    "probe_acc_layer10": 0.9583333333333334,
+    "probe_acc": 0.9583333333333334,
+    "concept_nll": 5.359109669607856,
+    "neutral_nll": 5.158256474037596,
+    "loss_ratio": 0.962521163410907
+  },
+  "ablated": {
+    "probe_acc_layer4": 1.0,
+    "probe_acc_layer5": 0.057666666666666665,
+    "probe_acc_layer6": 0.6693333333333333,
+    "probe_acc_layer8": 0.8753333333333334,
+    "probe_acc_layer9": 0.9253333333333332,
+    "probe_acc_layer10": 0.9423333333333334,
+    "probe_acc": 0.9423333333333334,
+    "concept_nll": 4.797704824710482,
+    "neutral_nll": 4.532984623678555,
+    "loss_ratio": 0.9448235748751173
+  },
+  "mode": "single-layer",
+  "locality_kl": 0.060887910425662994,
+  "generations": [
+    {
+      "prompt": "Tell me a story about Mickey Mouse going on an adventure.",
+      "baseline": "\n\nI'm not sure if I'm going to be able to tell you that. I'm not sure if I'm going to be able to tell you that. I'm not sure if I'm going to be able to tell you that. I'm not sure if I'm going to be",
+      "ablated": "\n\nMinnie Mouse: I'm not going to tell you a story about Mickey Mouse going on an adventure.\n\nMinnie Mouse: I'm not going to tell you a story about Mickey Mouse going on an adventure.\n\nMinnie Mouse: I'm not going to tell you a"
+    },
+    {
+      "prompt": "Who created Mickey Mouse and when did he first appear?",
+      "baseline": "\n\nMickey Mouse was born in 1885 in New York City. He was raised in a small town in the Bronx. He was raised in a small town in the Bronx. He was raised in a small town in the Bronx. He was raised in a small town in the Bronx. He",
+      "ablated": "\n\nMinnie Mouse was born in 1885 in New York City. He was raised in a small town in the Bronx. He was raised in a small town in the Bronx. He was raised in a small town in the Bronx. He was raised in a small town in the Bronx. He"
+    },
+    {
+      "prompt": "What is the name of Mickey Mouse's dog?",
+      "baseline": "\n\nThe name Mickey Mouse is a reference to the character from the Disney animated series Mickey Mouse and the Adventures of Mickey Mouse.\n\nWhat is the name of the character from the Disney animated series Mickey Mouse and the Adventures of Mickey Mouse? The name Mickey Mouse is a reference to the character from",
+      "ablated": "\n\nThe name Mickey Mouse is a combination of the Latin word for \"dog\" and the English word for \"dog.\"\n\nThe name Mickey Mouse is a combination of the Latin word for \"dog\" and the English word for \"dog.\" The name Mickey Mouse is a combination of the Latin"
+    },
+    {
+      "prompt": "Describe the personality of Mickey Mouse.",
+      "baseline": "\n\n\"I'm a big fan of Mickey Mouse, and I think he's a great character. I think he's a great character. I think he's a great character. I think he's a great character. I think he's a great character. I think he's a great character",
+      "ablated": "\n\n\"I think he's a very good person. He's a very good person. He's a very good person. He's a very good person. He's a very good person. He's a very good person. He's a very good person. He's a very good person"
+    },
+    {
+      "prompt": "Mickey Mouse first appeared in the cartoon Steamboat Willie.",
+      "baseline": "\n\nIn the game, the player can choose to play as a pirate or a pirate captain.\n\nIn the game, the player can choose to play as a pirate or a pirate captain. In the game, the player can choose to play as a pirate or a pirate captain. In the",
+      "ablated": "\n\nIn the game, the player can use the mouse to move the boat.\n\nIn the game, the player can use the mouse to move the boat. In the game, the player can use the mouse to move the boat. In the game, the player can use the mouse to"
+    },
+    {
+      "prompt": "Write a birthday message featuring Mickey Mouse.",
+      "baseline": "\n\nThe first time I saw the movie, I was so excited. I was so excited to see the movie. I was so excited to see the movie. I was so excited to see the movie. I was so excited to see the movie. I was so excited to see the movie.",
+      "ablated": "\n\nThe message will be sent to the following address:\n\nThe following address is the address of the Mickey Mouse birthday message.\n\nThe message will be sent to the following address:\n\nThe following address is the address of the Mickey Mouse birthday message.\n\nThe message will be"
+    },
+    {
+      "prompt": "The history of the pencil begins in the sixteenth century.",
+      "baseline": " The first known use of the pencil was in the early eighteenth century, when it was used to mark the date of the first printing of the Bible. The earliest known use of the pencil was in the early nineteenth century, when it was used to mark the date of the first printing of the Bible.",
+      "ablated": " The first known use of the pencil was in the early eighteenth century. The first use of the pencil was in the eighteenth century.\n\nThe first use of the pencil was in the eighteenth century. The first use of the pencil was in the eighteenth century.\n\nThe first use of the pencil"
+    },
+    {
+      "prompt": "Explain how a refrigerator keeps food cold.",
+      "baseline": "\n\nHow to make a refrigerator that keeps food cold.\n\nHow to make a refrigerator that keeps food cold.\n\nHow to make a refrigerator that keeps food cold.\n\nHow to make a refrigerator that keeps food cold.\n\nHow to make a refrigerator that keeps food cold.",
+      "ablated": "\n\nHow to make a refrigerator that keeps food cold.\n\nHow to make a refrigerator that keeps food cold.\n\nHow to make a refrigerator that keeps food cold.\n\nHow to make a refrigerator that keeps food cold.\n\nHow to make a refrigerator that keeps food cold."
+    },
+    {
+      "prompt": "Write a sentence about the water cycle in nature.",
+      "baseline": "\n\nThe water cycle is a natural phenomenon that occurs when the water cycle is in motion. The water cycle is a natural phenomenon that occurs when the water cycle is in motion.\n\nThe water cycle is a natural phenomenon that occurs when the water cycle is in motion.\n\nThe water cycle",
+      "ablated": "\n\nThe water cycle is a natural process that occurs when the water is heated by the sun. The sun is the source of heat. The water cycle is a natural process that occurs when the water is heated by the sun. The sun is the source of heat.\n\nThe water cycle is"
+    },
+    {
+      "prompt": "Describe the process of making bread from flour.",
+      "baseline": "\n\nThe process of making bread from flour is very simple. The first step is to make a loaf of bread. The bread is made from flour. The flour is mixed with water and then it is ground into flour. The flour is mixed with water and then it is ground into flour. The",
+      "ablated": "\n\nThe process of making bread from flour is a very simple one. The flour is made from a mixture of flour and water. The water is heated to a temperature of about 1,000 degrees Fahrenheit. The water is heated to a temperature of about 1,000 degrees Fahrenheit. The flour is"
+    }
+  ]
+}
