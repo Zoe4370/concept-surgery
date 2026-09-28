@@ -2,8 +2,6 @@
 
 **Surgical concept erasure for transformer language models: a measurement pipeline and a GPT-2 case study.**
 
-**Author:** Zoe Faith Gumise ([Zoe4370](https://github.com/Zoe4370))
-
 I wanted to know whether a concept can be removed from a language model by editing its activations instead of retraining it. This repo is the tool I built to test that, plus the result of running it on GPT-2 with one concept, Mickey Mouse.
 
 The idea is simple. Find a direction `v` in the residual stream that carries the concept, then project it out at inference time:
@@ -102,6 +100,10 @@ To rebuild the figures after a new run, point `paper/results_gpt2_mickey.json` a
 ## Limitations
 
 This removes a concept's *linear* representation at one point in the forward pass. Superposition, nonlinear encodings, recomputation from the prompt, and fine-tuning attacks can bring the information back. The weights still contain it, and only the forward pass is edited. Treat this as a lens on representation geometry and a baseline for unlearning research, not a copyright or safety compliance guarantee. Details are in `paper/paper.md` section 6.
+
+## Author
+
+Built by [Zoe Faith Gumise](https://github.com/Zoe4370).
 
 ## Citation
 
