@@ -14,7 +14,7 @@ class ErasureConfig:
     # --- model ---
     model_name: str = "gpt2"          # gpt2 | meta-llama/Meta-Llama-3.2-1B | microsoft/Phi-3-mini-4k-instruct
     device: str = "auto"              # "auto" | "cpu" | "cuda"
-    dtype: str = "float32"            # float32 recommended for small models; float16 on GPU for big ones
+    dtype: str = "auto"                # device-compatible precision, or an explicit float32/float16/bfloat16 override
 
     # --- activation capture ---
     capture_positions: str = "last"   # "last" = final token only, "all" = every token

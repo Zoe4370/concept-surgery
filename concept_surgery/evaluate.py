@@ -18,6 +18,8 @@ from typing import Dict, List
 import numpy as np
 import torch
 
+from .capture import format_prompts
+
 
 # --------------------------------------------------------------------------
 # 1. Linear-probe specificity
@@ -50,6 +52,7 @@ def linear_probe_accuracy(
 
 @torch.no_grad()
 def generate(model, tokenizer, prompt: str, device: str, max_new_tokens: int = 60) -> str:
+    prompt = format_prompts(tokenizer, [prompt], add_generation_prompt=True)[0]
     enc = tokenizer(prompt, return_tensors="pt").to(device)
     out = model.generate(
         **enc,
@@ -66,7 +69,7 @@ def average_nll(model, tokenizer, texts: List[str], device: str, batch_size: int
     """Mean negative log-likelihood per token over a list of texts."""
     nlls, n_tokens = [], 0
     for start in range(0, len(texts), batch_size):
-        batch = texts[start : start + batch_size]
+        batch = format_prompts(tokenizer, texts[start : start + batch_size])
         enc = tokenizer(batch, return_tensors="pt", padding=True).to(device)
         labels = enc["input_ids"].clone()
         labels[enc["attention_mask"] == 0] = -100
@@ -93,6 +96,7 @@ def next_token_kl(model, tokenizer, prompts: List[str], device: str) -> float:
     returned probability tables via :func:`kl_between`."""
     probs = []
     for prompt in prompts:
+        prompt = format_prompts(tokenizer, [prompt], add_generation_prompt=True)[0]
         enc = tokenizer(prompt, return_tensors="pt").to(device)
         logits = model(**enc).logits[0, -1]
         probs.append(torch.softmax(logits, dim=-1).cpu())

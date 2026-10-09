@@ -30,7 +30,7 @@ def main() -> None:
     ap.add_argument("--concept", default="mickey_mouse", help="built-in name or JSONL path")
     ap.add_argument("--neutral", default="neutral")
     ap.add_argument("--device", default="auto")
-    ap.add_argument("--dtype", default="float32")
+    ap.add_argument("--dtype", default="auto", choices=["auto", "float32", "float16", "bfloat16"])
     ap.add_argument("--methods", nargs="+", default=["mean_diff", "leace", "inlp"],
                     choices=["mean_diff", "pca", "leace", "inlp"])
     ap.add_argument("--layers", type=int, nargs="+", default=None)

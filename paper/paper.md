@@ -1,6 +1,6 @@
 # Surgical Concept Erasure: Locating and Ablating Concept Directions in Transformer Residual Streams
 
-**Zoe Faith Gumise** ([Zoe4370](https://github.com/Zoe4370))
+**Zoe Faith Gumise**
 
 *Version 1.2, September 2026. Includes experimental results from GPT-2 (see section 5).*
 

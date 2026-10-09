@@ -55,9 +55,13 @@ Fixing a model that has absorbed copyrighted text, toxic content, or a bias usua
 | `concept_surgery/evaluate.py` | Probes, neutral NLL, and KL locality metrics |
 | `concept_surgery/pipeline.py` | End to end: map, fit, select, ablate, evaluate |
 | `scripts/run_erasure.py` | Command line entry point |
+| `concept_surgery/models.py` | Preset model IDs for GPT-2, four Qwen2.5-Coder sizes, StarCoder2-3B, and Phi-2 |
+| `scripts/run_model_suite.py` | Sequential, resumable multi-model comparison with a JSON summary |
 | `scripts/make_figures.py` | Rebuilds every figure in `assets/figures/` from the saved results |
 | `paper/paper.md` | Full write-up with the math, protocol, results, and limitations |
+| `paper/submission_draft.md` | Competition-length paper draft with the archived pilot and pending-run caveats |
 | `paper/five-page-paper.md` | Short report on success rates and failure modes (PDF alongside) |
+| `scripts/build_paper_pdf.py` | Rebuilds a typeset PDF from `paper/submission_draft.md` |
 | `paper/results_gpt2_mickey.json` | Raw results of the run described above |
 | `notebooks/colab_demo.ipynb` | Colab notebook that runs the pipeline on GPT-2 |
 
@@ -88,6 +92,34 @@ The pipeline prints a before and after scorecard:
 - Side-by-side generations for eyeballing.
 
 To rebuild the figures after a new run, point `paper/results_gpt2_mickey.json` at your results and run `python scripts/make_figures.py`. Numbers can shift a little across library versions, so rerun the GPT-2 experiment on your machine to confirm them.
+
+## Multi-model runs
+
+The suite keeps GPT-2 as a historical control and adds four instruction-tuned
+Qwen2.5-Coder sizes, StarCoder2-3B, and Phi-2. Each model runs sequentially, uses the same
+prompt sets, seed, candidate-selection rule, and metrics, and writes its own
+`results.json`; `suite_results.json` records comparable headline metrics and
+any model-loading failures. A tokenizer's chat template is applied
+automatically when one is available; GPT-2 continues to use plain prompts.
+
+```bash
+python scripts/run_model_suite.py --list-models
+python scripts/run_model_suite.py --models gpt2 qwen-coder-0.5b qwen-coder-1.5b qwen-coder-3b starcoder2-3b phi-2 --dtype auto --out runs/model_suite
+```
+
+Use `--resume` to reuse completed per-model results after an interrupted run.
+Model weights may require several gigabytes of disk and RAM/VRAM; start with
+`gpt2` and `qwen-coder-0.5b`, then add larger models if the runtime can hold
+them. Qwen2.5-Coder-7B is marked as a high-memory option. StarCoder2-3B is
+code-pretrained but not instruction-tuned, so its results are a different
+prompting condition, not a direct instruction-model comparison. No cross-model
+scores are included in the paper until the models have actually been run.
+
+Build the paper PDF with:
+
+```bash
+python scripts/build_paper_pdf.py --output paper/submission_draft.pdf
+```
 
 ## Design decisions
 
